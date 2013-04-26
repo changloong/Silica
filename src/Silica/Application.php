@@ -186,7 +186,7 @@ class Application implements ArrayAccess
         
         $path    = urldecode( parse_url( '/' . ltrim($_SERVER['REQUEST_URI'], '/' ) , PHP_URL_PATH) );
         
-        if( false != strpos($path, '.') ) {
+        if( false !== strpos($path, '.') ) {
             $script_path    = trim( substr( $_SERVER['SCRIPT_FILENAME'], strlen($_SERVER['DOCUMENT_ROOT']) ) , '/') ;
             if( substr( ltrim( $path , '/') , 0, strlen($script_path) )  === $script_path ) {
                 $path   = '/' .  ltrim( substr( $path, 1 + strlen($script_path) ), '/' )  ;
