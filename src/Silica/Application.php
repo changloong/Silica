@@ -47,9 +47,6 @@ class Application implements ArrayAccess
     }
  
     public function offsetSet($id, $value) {
-        if ( array_key_exists($id, $this->values) && Closure instanceof $this->values[$id] ) {
-            throw new InvalidArgumentException(sprintf('Identifier "%s" is already defined.', $id));
-        } 
         $this->values[$id] = $value ;
         if (isset($this->listeners[$id])) {
             foreach ($this->listeners[$id] as $listener) {
