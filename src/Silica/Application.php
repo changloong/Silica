@@ -127,7 +127,7 @@ class Application implements ArrayAccess
     }
  
     public function register($provider, array $values = array() ) {
-         if ( !is_object($provider) || !﻿method_exists($provider, 'register') ) {
+         if (  !is_object($provider)  || \method_exists($provider, 'register') ) {
              throw new \InvalidArgumentException(
                  'provider should have register method'
              );
@@ -265,10 +265,7 @@ class Application implements ArrayAccess
                 $call   = $controller->to ;
                 break ;
             } else {
-                if( '/' != substr($controller->pattern,-1) ) {
-                    $controller->pattern .= '/' ;
-                }
-                if( $controller->pattern != $path ) {
+                if( \trim( $controller->pattern , '/') !== \trim( $path , '/') ) {
                     continue ;
                 }
                 $call   = $controller->to ;
