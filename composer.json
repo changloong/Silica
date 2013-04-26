@@ -1,7 +1,7 @@
 {
     "name": "silica/silica",
     "description": "The PHP micro-framework inspired by Silex",
-    "keywords": ["microframework"],
+    "keywords": ["microframework", "silex"],
     "homepage": "https://github.com/changloong/Silica",
     "license": "MIT",
     "authors": [
