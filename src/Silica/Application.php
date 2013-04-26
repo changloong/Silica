@@ -79,7 +79,7 @@ class Application implements ArrayAccess
         if ( array_key_exists($id, $this->values) ) {
             throw new InvalidArgumentException(sprintf('Identifier "%s" is already defined.', $id));
         } 
-        $this->values[$id] = function ($c) use ($callable) {
+        $this[$id] = function ($c) use ($callable) {
             static $object ;
             if (null === $object) {
                 $object = $callable($c) ;
@@ -93,7 +93,7 @@ class Application implements ArrayAccess
         if ( array_key_exists($id, $this->values) ) {
             throw new InvalidArgumentException(sprintf('Identifier "%s" is already defined.', $id));
         }
-        $this->values[$id] = function ($c) use ($callable) {
+        $this[$id] = function ($c) use ($callable) {
             return $callable ;
         } ;
         return $this ;
@@ -110,7 +110,7 @@ class Application implements ArrayAccess
             throw new InvalidArgumentException(sprintf('Identifier "%s" does not contain an object definition.', $id));
         }
  
-        $this->values[$id] = function ($c) use ($callable, $factory) {
+        $this[$id] = function ($c) use ($callable, $factory) {
             return $callable($factory($c), $c);
         };
         
