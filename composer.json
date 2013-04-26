@@ -1,0 +1,22 @@
+{
+    "name": "silex/silex",
+    "description": "The PHP micro-framework inspired by Silex",
+    "keywords": ["microframework"],
+    "homepage": "https://github.com/changloong/Silica",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chang Long",
+            "email": "changlon@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "monolog/monolog": "~1.4,>=1.4.1"
+    },
+    "autoload": {
+        "psr-0": { "Silica": "src/" }
+    }
+}
