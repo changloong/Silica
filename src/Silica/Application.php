@@ -38,7 +38,7 @@ class Application implements ArrayAccess
         $this->values       = array();
         $this->listeners    = array() ;
         
-        $this['debug'] = false;
+        $this['debug'] = true ;
         $this['charset'] = 'UTF-8';
         $this['locale'] = 'en' ;
         foreach ($values as $key => $value) {
@@ -184,20 +184,13 @@ class Application implements ArrayAccess
     
     public function run( Closure $not_match_callback = null ) {
         
-        $uri    = $_SERVER['REQUEST_URI'] ;
-        $pos    =  strpos($uri, '?') ;
-        if( false != $pos ) {
-            $uri    = substr( $uri, 0, $pos ) ;
-        }
+        $path    = urldecode( parse_url( '/' . ltrim($_SERVER['REQUEST_URI'], '/' ) , PHP_URL_PATH) );
         
-        $pos    =  strpos($uri, '.') ;
-        if( false != $pos ) {
+        if( false != strpos($path, '.') ) {
             $script_path    = trim( substr( $_SERVER['SCRIPT_FILENAME'], strlen($_SERVER['DOCUMENT_ROOT']) ) , '/') ;
-            if( substr( $uri, 1, strlen($script_path) )  === $script_path ) {
-                $path   = '/' .  ltrim( substr( $uri, 1 +strlen($script_path) ), '/' )  ;
-            }
-        } else {
-            $path   = $uri ;
+            if( substr( ltrim( $path , '/') , 0, strlen($script_path) )  === $script_path ) {
+                $path   = '/' .  ltrim( substr( $path, 1 + strlen($script_path) ), '/' )  ;
+            } 
         }
         
         $method = $_SERVER['REQUEST_METHOD'] ;
