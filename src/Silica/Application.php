@@ -127,7 +127,7 @@ class Application implements ArrayAccess
     }
  
     public function register($provider, array $values = array() ) {
-         if (  !is_object($provider)  || \method_exists($provider, 'register') ) {
+         if (  !is_object($provider)  || !\method_exists($provider, 'register') ) {
              throw new \InvalidArgumentException(
                  'provider should have register method'
              );
