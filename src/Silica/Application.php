@@ -276,7 +276,7 @@ class Application implements ArrayAccess
         $response    = null ;
         if( !$call ) {
             if( $not_match_callback ) {
-                $not_match_callback() ;
+                $not_match_callback( $path ) ;
             } else {
                 throw new Exception(sprintf("`%s` is not matched", $path)) ;
             }
