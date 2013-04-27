@@ -219,7 +219,7 @@ class Application implements ArrayAccess
                     $pattern .= '/?' ;
                 }
                 
-                $regex = str_replace(['(',')','%'], ['(?:',')?','([^/]+)'],  $pattern ) . $last_param ;
+                $regex = str_replace( array('(',')','%'), array('(?:',')?','([^/]+)'),  $pattern ) . $last_param ;
                 
                 if (!preg_match('#^'.$regex.'$#', $path , $_args) ) {
                     continue ;
@@ -243,7 +243,7 @@ class Application implements ArrayAccess
                  * @FIXME this need refactor
                  */
                 $pattern      = rtrim($controller->pattern, '/') ;
-                $regex = preg_replace('#:([\w]+)#', '(?<\\1>[^/]+)', str_replace(['*', ')'], ['[^/]+', ')?'], $pattern ) ) ;
+                $regex = preg_replace('#:([\w]+)#', '(?<\\1>[^/]+)', str_replace( array('*', ')'), array('[^/]+', ')?'), $pattern ) ) ;
                 if (!preg_match('#^'.$regex.'$#', $path , $values ) ) {
                     continue ;
                 }
