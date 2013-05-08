@@ -15,6 +15,7 @@ use Exception;
 use ArrayAccess;
 use Closure;
 use stdClass;
+use InvalidArgumentException;
 
 /**
  * The Silica framework class.
